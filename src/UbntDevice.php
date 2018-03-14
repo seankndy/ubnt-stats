@@ -24,7 +24,7 @@ class UbntDevice
     }
 
     public function getHostname() {
-        return $ths->status->host->devmodel;
+        return $ths->status->host->hostname;
     }
 
     public function getVersion() {
@@ -170,7 +170,7 @@ class UbntDevice
     public static function init($ip, array $logins) {
         $device = new UbntDevice($ip);
         foreach ($logins as $login) {
-            if ($device->ssh($login['username'], $login['password'])) {
+            if ($device->ssh($login['user'], $login['pass'])) {
                 $device->setStatus($device->runCmd('/usr/www/status.cgi'));
 
                 return $device;
