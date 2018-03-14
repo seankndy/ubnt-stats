@@ -24,7 +24,7 @@ class UbntDevice
     }
 
     public function getHostname() {
-        return $ths->status->host->hostname;
+        return $this->status->host->hostname;
     }
 
     public function getVersion() {
