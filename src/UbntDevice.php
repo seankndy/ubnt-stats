@@ -142,7 +142,7 @@ class UbntDevice
     }
 
     public function ssh($username, $password) {
-        $this->ssh = new SSH2($this->ip);
+        $this->ssh = new SSH2($this->ip, 22, 5);
         if ($this->ssh->login($username, $password)) {
             return true;
         } else {
