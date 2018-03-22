@@ -135,8 +135,10 @@ class UbntDevice
         $output = $this->runCmd('cat /tmp/running.cfg', false);
         $this->config = [];
         foreach (preg_split('/[\r\n]+/', $output) as $line) {
-            list($k,$v) = explode('=', $line);
-            $this->config[$k] = $v;
+            if (strstr($line, '=')) {
+                list($k,$v) = explode('=', $line);
+                $this->config[$k] = $v;
+            }
         }
         return $this->config;
     }
