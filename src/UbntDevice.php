@@ -123,7 +123,7 @@ class UbntDevice
 
     public function getWpaKey() {
         if ($config = $this->getConfig()) {
-            return $config['wpasupplicant.profile.1.network.1.psk'];
+            return isset($config['wpasupplicant.profile.1.network.1.psk']) ? $config['wpasupplicant.profile.1.network.1.psk'] : '';
         }
         return '';
     }
